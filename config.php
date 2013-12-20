@@ -17,8 +17,7 @@
  $settings['dbhost'] = "localhost";
  $settings['dbname'] = "ipam";
  $settings['dbuser'] = "ipam";
- $settings['dbpass'] = "password";
-
+ $settings['dbpass'] = "ip12#4";
  //Authentication settings
  
 $settings['auth_method'] = "local";
