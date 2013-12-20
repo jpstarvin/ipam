@@ -42,7 +42,7 @@ Import the ipam_database.sql file into MYSQL.
 
 Open a web browser and point it to the location of index.php
 
-
+Login with admin/admin
 
 LICENSE
 =======
