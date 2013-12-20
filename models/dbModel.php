@@ -89,7 +89,6 @@ function updateStats($db){
 	$user = $_SESSION['username'];
 	$testsql='SELECT * FROM stats WHERE session=? LIMIT 1';
 	$test = getRowCount($db,$testsql,$session);
-	echo $test;
 	if ($test!=1){
 		$result = $db->prepare('INSERT INTO stats (`ipaddress`,`user`,`session`,`time`,`online`) VALUES (?,?,?,?,?)');
 		$result->execute(array($ip,$user,$session,$time,"1"));

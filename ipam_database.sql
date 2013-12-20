@@ -90,6 +90,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`, `role`) VALUES
+(1, 'admin', '$2a$10$QfygyosUT2S6KUJup2ohnu/.PH/Vch8San6rsoAtROwcyhT6qf38u', 'Administrator', 'Main', 'Administrator');
+
+--
 -- Table structure for table `stats`
 --
 
