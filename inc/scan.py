@@ -1,3 +1,29 @@
+##############################################################################
+##    Author: Adam Phillips
+##
+##    test.py
+##
+##    This script will scan the network based on input and
+##    attempt to determine if the host is pingable, the DNS name
+##    if applicable, and/or the SNMP system name.
+##
+##    Usage:  test.py -n [network] -x [exclusion list] -s [Comm list]
+##
+##        Example:
+##              test.py -n 192.168.1.0/24 -x 192.168.1.50,192.168.1.60-192.168.1.65 -s public,private
+##
+##              -n:  The network address in /n notation to be scanned
+##              -x:  Addresses to be excluded from the scan seperated by ','
+##              -s:  List of SNMP communities seperated by ','
+##
+##
+##
+##      REQUIRED MODULES:
+##              LIBSNMP-PYTHON
+##              PYTHON-IPADDR
+##
+##############################################################################
+
 import argparse
 import netsnmp
 import socket
