@@ -28,6 +28,8 @@ PHP5
 Apache2
 MySQL
 Python
+  - libsnmp-python
+  - python-ipaddr
 
 PHP-LDAP module is required for using LDAP Active Directory authentication.
 
