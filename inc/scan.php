@@ -12,7 +12,15 @@
  $snmp = $argv[3];
  $netid = $argv[4];
  
- $str=exec("python inc/scan.py -n $network -x $exclusion -s $snmp",$output,$ret_code);
+ $cmd = "-n " . $network;
+ if($exclusion <> "none"){
+ 	$cmd .= "-x " . $exclusion;
+ }
+ if($snmp <> "none"){
+ 	$cmd .= "-s " . $snmp;
+ }
+ 
+ $str=exec("python inc/scan.py $cmd",$output,$ret_code);
  
  foreach ($output as $res){
  	$out = explode(",",$res);
