@@ -71,10 +71,10 @@ if ($manage == 'netgroup'){
 		$net = getNet($id,$dbh);
 		if($net['exclusion_list'] == ""){
 			$ex = "none";
-		}
+		}else{$ex = $net['exclusion_list'];}
 		if($net['snmp'] == ""){
 			$snmp = "none";
-		}
+		}else{$snmp = $net['snmp'];}
 		$command = "php " . $settings['site_path'] ."inc/scan.php " . $net['network'] . " " . $ex . " " . $snmp . " " . $net['id'] . " > /dev/null 2>&1 & echo $!";
 		exec($command);
 		echo "<script> window.location = \"?v=admin&m=network&notif=1\";</script>";
