@@ -14,10 +14,10 @@
  
  $cmd = "-n " . $network;
  if($exclusion <> "none"){
- 	$cmd .= "-x " . $exclusion;
+ 	$cmd .= " -x " . $exclusion;
  }
  if($snmp <> "none"){
- 	$cmd .= "-s " . $snmp;
+ 	$cmd .= " -s " . $snmp;
  }
  
  $str=exec("python inc/scan.py $cmd",$output,$ret_code);
