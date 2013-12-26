@@ -69,7 +69,13 @@ if ($manage == 'netgroup'){
 	}
 	elseif ($form == 'scan'){
 		$net = getNet($id,$dbh);
-		$command = "php " . $settings['site_path'] ."inc/scan.php " . $net['network'] . " " . $net['exclusion_list'] . " " . $net['snmp'] . " " . $net['id'] . " > /dev/null 2>&1 & echo $!";
+		if($net['exclusion_list'] == ""){
+			$ex = "none";
+		}
+		if($net['snmp'] == ""){
+			$snmp = "none";
+		}
+		$command = "php " . $settings['site_path'] ."inc/scan.php " . $net['network'] . " " . $ex . " " . $snmp . " " . $net['id'] . " > /dev/null 2>&1 & echo $!";
 		exec($command);
 		echo "<script> window.location = \"?v=admin&m=network&notif=1\";</script>";
 	}
