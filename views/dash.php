@@ -14,14 +14,14 @@ include($settings['site_pathe'] . 'controllers/dashController.php');
 			<hr />
 			<div><table class="dash-info formcolumn">
 				<tr>
-					<th width="250px">Networks</td>
+					<th width="250px">Top 10 Networks</td>
 					<th>Used IPs</td>
 				</tr>
 				<?php //loop through networks to print in table
-					foreach($nets as $net){
+					foreach($top as $net){
 						echo '<tr>';
 						echo '<td><a href="?v=listIP&netid=' . $net['id'] . '">' . $net['name'] . '</a></td>';
-						echo '<td align="center">' . $ipcount[$net['id']] . '</td>';
+						echo '<td align="center">' . $net['count(*)'] . '</td>';
 						echo '</tr>';
 					}
 					?>
