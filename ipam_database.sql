@@ -29,13 +29,13 @@ USE `ipam`;
 --
 
 CREATE TABLE IF NOT EXISTS `ipaddress` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `id` mediumint NOT NULL AUTO_INCREMENT,
   `ipaddress` varchar(20) NOT NULL,
   `desc` varchar(60) NOT NULL,
   `devicename` varchar(30) NOT NULL,
   `devicetype` varchar(30) NOT NULL,
   `notes` text NOT NULL,
-  `netid` tinyint(4) NOT NULL,
+  `netid` mediumint NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ipaddress` (`ipaddress`),
   KEY `netid` (`netid`)
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `ipaddress` (
 --
 
 CREATE TABLE IF NOT EXISTS `netgroup` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `id` mediumint NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   `desc` text,
   PRIMARY KEY (`id`)
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `netgroup` (
 --
 
 CREATE TABLE IF NOT EXISTS `networks` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `netgroup` tinyint(4) NOT NULL,
+  `id` mediumint NOT NULL AUTO_INCREMENT,
+  `netgroup` int NOT NULL,
   `name` varchar(30) NOT NULL,
   `network` varchar(30) NOT NULL,
   `exclusion_list` varchar(160) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `networks` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `id` mediumint NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` varchar(200) NOT NULL,
   `fname` varchar(20) NOT NULL,
@@ -101,7 +101,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`, `role`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` mediumint NOT NULL AUTO_INCREMENT,
   `ipaddress` varchar(30) NOT NULL,
   `user` varchar(50) NOT NULL,
   `session` char(100) NOT NULL,
