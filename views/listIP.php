@@ -14,6 +14,10 @@ include($settings['site_path'] . 'controllers/listController.php');
 			<?php if($_REQUEST['a']<>'search'){?>
 			<table id="subnet-info">
 				<tr>
+                                        <th colspan=2 style="border: none; color: #006699; font-size:12pt; text-align: center;"><?php echo $_REQUEST['ng'];?></th>
+                                <tr>
+
+				<tr>
 					<th>Network Name</th>
 					<td><?php echo $network['name'];?></td>
 				</tr>
