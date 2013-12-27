@@ -34,9 +34,7 @@ if($_REQUEST['a'] == 'login'){
 		if($settings['ad_pass'] <> ''){
 			$options['admin_password'] = $settings['ad_pass'];
 		}
-		print_r($options);	
-		//adLDAP::__construct($options);
-			
+
 		try {
 		    $adldap = new adLDAP($options);
 		}
