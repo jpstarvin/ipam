@@ -71,7 +71,7 @@ def getSNMP(ip,comm):
 	count = 0
 	while (count < len(comm)):
 		c = comm[count]
-		sysname = netsnmp.snmpget(oid, Version = 2, DestHost = str(ip), Community = c, Timeout = 30000, Retries = 1)
+		sysname = netsnmp.snmpget(oid, Version = 2, DestHost = str(ip), Community = c, Timeout = 40000, Retries = 1)
 		if (sysname[0]):
 			break
 		count += 1
