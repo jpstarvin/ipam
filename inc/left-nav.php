@@ -16,7 +16,7 @@ foreach($navs as $nav){
 		echo '<ul class="submenu">';
 	}
 	$lock=1;
-	echo '<li><a href="?v=listIP&netid=' . $nav['id'] . '">' . $nav['name'] . '</a></li>';
+	echo '<li><a href="?v=listIP&ng=' . $netname . '&netid=' . $nav['id'] . '">' . $nav['name'] . '</a></li>';
 }?>
 
 </div>
