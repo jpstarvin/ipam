@@ -1,15 +1,9 @@
 <?php
 
-function getNets($dbh){
-	$sql = 'SELECT id,name FROM networks';
-	$rows = getTable($dbh,$sql);
-	return($rows);
-}
-
-function getIPCount($dbh,$id){
-	$sql = 'SELECT * FROM ipaddress WHERE netid=?';
-	$rows = getRowCount($dbh,$sql,$id);
-	return($rows);
+function getTop($dbh){
+        $sql = 'SELECT ipaddress.netid, networks.name, count(*) FROM ipaddress LEFT JOIN networks ON ipaddress.netid=networks.id GROUP BY ipaddress.netid ORDER BY count(*) DESC LIMIT 10';
+        $rows = getTable($dbh,$sql);
+        return($rows);
 }
 
 function updateStaleStats($dbh){
