@@ -7,9 +7,20 @@ function getTop($dbh){
 }
 
 function updateStaleStats($dbh){
-	$timeout = 1440;
-	$sql = 'UPDATE stats SET `online`="0" WHERE time<?';
-	updateRecord($dbh,$sql,$timeout);
+        $session = session_id();
+        $timeout = time();
+        $updatesql = 'UPDATE stats SET `time`=? WHERE session=?';
+        $data = array($timeout,$session);
+        updateRecord($dbh,$updatesql,$data);
+        $check = 'SELECT session, (time+1440) AS timeout FROM stats';
+        $rows = getTable($dbh,$check);
+        foreach($rows as $row){
+                if($row['timeout'] < $timeout){
+                        $sql = 'UPDATE stats SET `online`=? WHERE session=?';
+                        $data1 = array("0",$row['session']);
+                        updateRecord($dbh,$sql,$data1);
+                }
+        }
 }
 
 function getLatestLogins($dbh){
