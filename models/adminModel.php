@@ -45,8 +45,10 @@ function updateNetwork($data,$dbh){
 }
 
 function deleteNetwork($id,$dbh){
-	$sql = 'DELETE FROM networks WHERE `id`=?';
-	deleteRecord($dbh,$sql,$id);
+        $delip = 'DELETE FROM ipaddress WHERE netid=?';
+        $sql = 'DELETE FROM networks WHERE `id`=?';
+        deleteRecord($dbh,$delip,$id);
+        deleteRecord($dbh,$sql,$id);
 }
 
 function addNetgroup($data,$dbh){
