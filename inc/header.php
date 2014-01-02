@@ -42,7 +42,7 @@
 		});
 		
 		$(document).ready(function () {
-                        $("#networks").tablesorter({ sortList:[[1,0]], headers: {3:{sorter:false}, 6:{sorter:false}}});
+                        $("#networks").tablesorter({ sortList:[[1,0]], headers: {3:{sorter:false}, 5:{sorter:false}}});
                 });
                 $(document).ready(function () {
                         $("#netgroups").tablesorter({ sortList:[[0,0]], headers: {2:{sorter:false}}});
