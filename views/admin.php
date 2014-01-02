@@ -43,7 +43,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 									echo "<td>" . $netgroup['desc'] . "</td>";
 									echo "<td align='right' width='80px'>
 										<a href='". $settings['site_path'] . "?v=admin&m=" . $manage ."&a=update&id=" . $netgroup['id'] . "' title='Edit' ><img src='" . $settings['site_path'] . "images/edit.png' /></a>
-										<a href='#' onClick='confirmDelete(\"" . $settings['site_path'] . "?v=admin&m=" . $manage ."&a=delete&id=" . $netgroup['id'] . "\")' title='Delete'><img src='" . $settings['site_path'] . "images/delete.png' /></a>
+										<a href='#' onClick='confirmNetgroupDelete(\"" . $settings['site_path'] . "?v=admin&m=" . $manage ."&a=delete&id=" . $netgroup['id'] . "\")' title='Delete'><img src='" . $settings['site_path'] . "images/delete.png' /></a>
 										</td>";
 									echo "</tr>";
 								}
@@ -113,7 +113,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 										echo "<td align='right' width='80px'>
 											<a href='". $settings['site_path'] . "?v=admin&m=" . $manage ."&a=scan&id=" . $net['id'] . "' title='Scan' ><img src='" . $settings['site_path'] . "images/scan.png' /></a>
 											<a href='". $settings['site_path'] . "?v=admin&m=" . $manage ."&a=update&id=" . $net['id'] . "' title='Edit' ><img src='" . $settings['site_path'] . "images/edit.png' /></a>
-											<a href='#' onClick='confirmDelete(\"" . $settings['site_path'] . "?v=admin&m=" . $manage ."&a=delete&id=" . $net['id'] . "\")' title='Delete'><img src='" . $settings['site_path'] . "images/delete.png' /></a>
+											<a href='#' onClick='confirmNetworkDelete(\"" . $settings['site_path'] . "?v=admin&m=" . $manage ."&a=delete&id=" . $net['id'] . "\")' title='Delete'><img src='" . $settings['site_path'] . "images/delete.png' /></a>
 											</td>";
 										echo "</tr>";
 									}
