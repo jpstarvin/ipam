@@ -27,7 +27,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=netgroup';">					
 				</form></div>
 				<div class="ipTable">
-					<table id="myTable" class="tablesorter">
+					<table id="netgroups" class="tablesorter">
 						<thead>
 							<tr>
 								<th>Name</th>
@@ -89,7 +89,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=network';">					
 				</form></div>
 				<div class="ipTable">
-					<table id="myTable" class="tablesorter">
+					<table id="networks" class="tablesorter">
 						<thead>
 							<tr>
 								<th>Name</th>
