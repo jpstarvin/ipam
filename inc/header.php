@@ -40,6 +40,14 @@
 		$(document).ready(function () {
 			$("#myTable").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}}}); 
 		});
+		
+		$(document).ready(function () {
+                        $("#networks").tablesorter({ sortList:[[1,0]], headers: {3:{sorter:false}, 6:{sorter:false}}});
+                });
+                $(document).ready(function () {
+                        $("#netgroups").tablesorter({ sortList:[[0,0]], headers: {2:{sorter:false}}});
+                });
+
 	</script>
 	
 
