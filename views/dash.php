@@ -20,7 +20,7 @@ include($settings['site_pathe'] . 'controllers/dashController.php');
 				<?php //loop through networks to print in table
 					foreach($top as $net){
 						echo '<tr>';
-						echo '<td><a href="?v=listIP&netid=' . $net['id'] . '">' . $net['name'] . '</a></td>';
+						echo '<td><a href="?v=listIP&netid=' . $net['netid'] . '">' . $net['ngname'] . ' - ' . $net['name'] . '</a></td>';
 						echo '<td align="center">' . $net['count(*)'] . '</td>';
 						echo '</tr>';
 					}
