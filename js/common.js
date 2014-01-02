@@ -9,6 +9,16 @@ function confirmDelete(url){
 		location.href=url
 }
 
+function confirmNetworkDelete(url){
+        if (confirm("This will delete all ipaddresses assigned to this network. Continue?"))
+                location.href=url
+}
+
+function confirmNetgroupDelete(url){
+        if (confirm("You must delete the networks in this group before deleting the netgroup or the delete will fail. Continue?"))
+                location.href=url
+}
+
 function showNotificationBar(message, duration, bgColor, txtColor, height) {
  
     /*set default values*/
