@@ -34,7 +34,6 @@ if ($manage == 'netgroup'){
 		}
 	}
 	elseif ($form == 'delete'){
-		$id = $_REQUEST['id'];
 		deleteNetgroup($id,$dbh);
 		echo "<script> window.location = \"?v=admin&m=netgroup\";</script>";
 	}	
@@ -58,7 +57,6 @@ if ($manage == 'netgroup'){
 		}
 	}
 	elseif ($form == 'delete'){
-		$id = $_REQUEST['id'];
 		deleteNetwork($id,$dbh);
 		echo "<script> window.location = \"?v=admin&m=network\";</script>";
 	}	
