@@ -1,10 +1,11 @@
 <?php
-
+ 
 function getTop($dbh){
-        $sql = 'SELECT ipaddress.netid, networks.name, count(*) FROM ipaddress LEFT JOIN networks ON ipaddress.netid=networks.id GROUP BY ipaddress.netid ORDER BY count(*) DESC LIMIT 10';
+        $sql = 'SELECT ipaddress.netid, networks.name, netgroup.name AS ngname, count(*) FROM ipaddress LEFT JOIN networks ON ipaddress.netid=networks.id LEFT JOIN netgroup ON networks.netgroup=netgroup.id GROUP BY ipaddress.netid ORDER BY count(*) DESC LIMIT 10';
         $rows = getTable($dbh,$sql);
         return($rows);
 }
+
 
 function updateStaleStats($dbh){
         $session = session_id();
