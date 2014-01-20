@@ -17,7 +17,7 @@
 			<?php }?>
 			<li class="nav-search">
 				<form name="search" method="post" action="<?php echo $settings['site_path'];?>?v=listIP&a=search">
-					<nobr></nobr><input type="text" name="keyword" placeholder="Search..."><a href="#" onClick="this.submit();"><img src="<?php echo $settings['site_path'];?>images/search.png" height="20px" width="20px"/></a></nobr>
+					<nobr></nobr><input type="text" name="keyword" placeholder="Search..."><input type="image" src="<?php echo $settings['site_path'];?>images/search.png" height="20px" width="20px"/></nobr>
 				</form>
 			</li>
 			
