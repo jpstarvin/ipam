@@ -1,0 +1,9 @@
+To upgrade to v2.1 from 2.0x:
+
+Backup the database and config.php files and any other files that have been customized
+Extract the contents of this tar.gz or zip to the current web path
+Restore the config.php file from backup.
+Compare the customized files with the new files and make any needed changes
+Run the 2.0x_upgrade_2.1.sql against the ipam database to add a column to the ipaddress table and
+ prepopulate the column for current records.
+Initiate a scan for each network. -- Must be done before new assignments can be added.
