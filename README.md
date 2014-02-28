@@ -3,7 +3,7 @@ ipam
 
 MVC IPAM Project
 
-Version 2.0
+Version 2.1
 
 Written by Adam Phillips
 
