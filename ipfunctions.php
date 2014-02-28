@@ -19,6 +19,7 @@ if ($_REQUEST['a'] <> ''){
 				echo '
 					<form name="update" method="post" action="' . $settings['site_path'] .'ipfunctions.php?a=' . $form . '">
 					<input type="hidden" name="id" value="'.$ip['id'] .'">
+					<input type="hidden" value="0" name="assigned">
 					<label for="netid">Network</label><br />
 					<select name="netid" class="ui-corner-all" >';
 					
@@ -41,10 +42,21 @@ if ($_REQUEST['a'] <> ''){
 				echo'
 					</select>
 					<br />
-					<label for="ipadd">IP Address</label><br />
-					<input type="text" name="ipadd" class="ui-corner-all" value="' . $ip['ipaddress'] .'">
-					<br />
-					<label for="devname">Device Name</label><br />
+					<label for="ipadd">IP Address</label><br />';
+				if ($_REQUEST['id'] <> ''){
+					echo '<input type="text" name="ipadd" class="ui-corner-all" value="' . $ip['ipaddress'] .'" readonly>';
+				}else{
+					echo '<select name="ipadd" class="ui-corner-all">';
+					
+					foreach($ipaddr as $ip){
+						if($ip['used']==0){
+							echo '<option value="' . $ip['id'] .'">' . $ip['ipaddress'] .'</option>';
+						}
+					}
+					echo '</select>';
+				}
+				echo'
+					<br />					<label for="devname">Device Name</label><br />
 					<input type="text" name="devname" class="ui-corner-all" value="' . $ip['devicename'] .'">
 					<br />
 					<label for="devtype">Device Type</label><br />
@@ -90,6 +102,15 @@ if ($_REQUEST['a'] <> ''){
 					<br />
 					<label for="notes">Notes</label><br />
 					<textarea name="notes" class="ui-corner-all" >' . $ip['notes'] .'</textarea>
+					<br />
+					<label for="assign">Assigned?</label>';
+					
+					if($ip['used']==1){
+						echo '<input type="checkbox" name="assigned" value="1" checked="checked">';
+					}else{
+						echo '<input type="checkbox" name="assigned" value="1">';
+					}
+					echo'
 					<br />
 					<button class="submit" onClick="this.submit();">' . ucfirst($form) . '</button>
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.close();">

@@ -5,7 +5,7 @@ table.tablesorter {
 	background-color: #CDCDCD;
 	margin:10px 0pt 15px;
 	font-size: 8pt;
-	width: 750px;
+	width: 743px;
 	text-align: left;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
@@ -25,6 +25,7 @@ table.tablesorter tbody td {
 	padding: 4px;
 	background-color: #FFF;
 	vertical-align: top;
+	max-width: 150px;
 }
 table.tablesorter tbody tr.odd td {
 	background-color:#F0F0F6;

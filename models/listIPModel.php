@@ -27,18 +27,19 @@ function getIP($id,$dbh){
 }
 
 function updateIP($data,$dbh){
-	$sql = 'UPDATE ipaddress SET `ipaddress`=?,`devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=? WHERE `id`=?';
+	$sql = 'UPDATE ipaddress SET `ipaddress`=?,`devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=?,`used`=? WHERE `id`=?';
+	print_r($data);
 	updateRecord($dbh,$sql,$data);
 }
 
 function addIP($data,$dbh){
-	$sql = 'INSERT INTO ipaddress(`ipaddress`,`devicename`,`devicetype`,`desc`,`notes`,`netid`) VALUES (?,?,?,?,?,?)';
-	addRecord($dbh,$sql,$data);
+	$sql = 'UPDATE ipaddress SET `ipaddress`=?,`devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=?,`used`=? WHERE `id`=?';
+	updateRecord($dbh,$sql,$data);
 }
 
-function deleteIP($id,$dbh){
-	$sql = 'DELETE FROM ipaddress WHERE id=?';
-	deleteRecord($dbh,$sql,$id);
+function unassignIP($data,$dbh){
+	$sql = 'UPDATE ipaddress SET `used`=? WHERE id=?';
+	updateRecord($dbh,$sql,$data);
 }
 
 function searchIP($key,$dbh){

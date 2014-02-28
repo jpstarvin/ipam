@@ -36,9 +36,11 @@ CREATE TABLE IF NOT EXISTS `ipaddress` (
   `devicetype` varchar(30) NOT NULL,
   `notes` text NOT NULL,
   `netid` mediumint NOT NULL,
+  `used` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ipaddress` (`ipaddress`),
-  KEY `netid` (`netid`)
+  KEY `netid` (`netid`),
+  KEY `used` (`used`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99 ;
 
 

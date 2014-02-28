@@ -34,21 +34,21 @@ function getUser($id,$dbh){
 }
 
 function addNetwork($data,$dbh){
-	$sql = 'INSERT INTO networks (`netgroup`,`name`,`network`,`exclusion_list`,`snmp`) VALUES (?,?,?,?,?)';
+	$sql = 'INSERT INTO networks (`netgroup`,`name`,`network`,`vlan`,`exclusion_list`,`snmp`) VALUES (?,?,?,?,?,?)';
 	addRecord($dbh,$sql,$data);
 
 }
 
 function updateNetwork($data,$dbh){
-	$sql = 'UPDATE networks SET `netgroup`=?,`name`=?,`network`=?,`exclusion_list`=?,`snmp`=? WHERE id=?';
+	$sql = 'UPDATE networks SET `netgroup`=?,`name`=?,`network`=?,`vlan`=?,`exclusion_list`=?,`snmp`=? WHERE id=?';
 	updateRecord($dbh,$sql,$data);
 }
 
 function deleteNetwork($id,$dbh){
-        $delip = 'DELETE FROM ipaddress WHERE netid=?';
-        $sql = 'DELETE FROM networks WHERE `id`=?';
-        deleteRecord($dbh,$delip,$id);
-        deleteRecord($dbh,$sql,$id);
+	$delip = 'DELETE FROM ipaddress WHERE netid=?';
+	$sql = 'DELETE FROM networks WHERE `id`=?';
+	deleteRecord($dbh,$delip,$id);
+	deleteRecord($dbh,$sql,$id);
 }
 
 function addNetgroup($data,$dbh){

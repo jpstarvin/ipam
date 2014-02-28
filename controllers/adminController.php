@@ -34,6 +34,7 @@ if ($manage == 'netgroup'){
 		}
 	}
 	elseif ($form == 'delete'){
+		$id = $_REQUEST['id'];
 		deleteNetgroup($id,$dbh);
 		echo "<script> window.location = \"?v=admin&m=netgroup\";</script>";
 	}	
@@ -51,20 +52,29 @@ if ($manage == 'netgroup'){
 	if ($form == 'update'){
 		$net = getNet($id,$dbh);
 		if ($_POST['id'] <> ''){
-			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['exclusion'],$_POST['snmp'],$id);
+			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['vlan'],str_replace(' ', '', $_POST['exclusion']),str_replace(' ', '', $_POST['snmp']),$id);
 			updateNetwork($data,$dbh);
 			echo "<script> window.location = \"?v=admin&m=network\";</script>";
 		}
 	}
 	elseif ($form == 'delete'){
+		$id = $_REQUEST['id'];
 		deleteNetwork($id,$dbh);
 		echo "<script> window.location = \"?v=admin&m=network\";</script>";
 	}	
 	elseif ($form == 'add'){
 		if($_POST['name'] <> ''){
-			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['exclusion'],$_POST['snmp']);
+			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['vlan'],str_replace(' ', '', $_POST['exclusion']),str_replace(' ', '', $_POST['snmp']));
 			addNetwork($data,$dbh);
-			echo "<script> window.location = \"?v=admin&m=network\";</script>";
+			if($_POST['exclusion_list'] == ""){
+				$ex = "none";
+			}else{$ex = $_POST['exclusion_list'];}
+			if($_POST['snmp'] == ""){
+				$snmp = "none";
+			}else{$snmp = $_POST['snmp'];}
+			$command = "php " . $settings['site_path'] ."inc/scan.php " . $_POST['network'] . " " . $ex . " " . $snmp . " 0  > /dev/null 2>&1 & echo $!";
+			exec($command);
+			echo "<script> window.location = \"?v=admin&m=network&notif=1\";</script>";
 		}
 	}
 	elseif ($form == 'scan'){
@@ -76,6 +86,7 @@ if ($manage == 'netgroup'){
 			$snmp = "none";
 		}else{$snmp = $net['snmp'];}
 		$command = "php " . $settings['site_path'] ."inc/scan.php " . $net['network'] . " " . $ex . " " . $snmp . " " . $net['id'] . " > /dev/null 2>&1 & echo $!";
+//		$command = "php " . $settings['site_path'] ."inc/scan.php " . $net['network'] . " " . $net['exclusion_list'] . " " . $net['snmp'] . " " . $net['id'] . " > /dev/null 2>&1 & echo $!";
 		exec($command);
 		echo "<script> window.location = \"?v=admin&m=network&notif=1\";</script>";
 	}
@@ -91,6 +102,7 @@ if ($manage == 'netgroup'){
 		}
 	}
 	elseif ($form == 'delete'){
+		$id = $_REQUEST['id'];
 		deleteUser($id,$dbh);
 		echo "<script> window.location = \"?v=admin&m=users\";</script>";
 	}	

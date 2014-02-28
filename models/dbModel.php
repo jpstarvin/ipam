@@ -62,7 +62,7 @@ function searchKeyword($db,$sql,$key){
 }
 
 function getNav($dbh){
-	$result = $dbh->query('SELECT netgroup.name AS "netname", networks.* FROM netgroup LEFT JOIN networks ON netgroup.id=networks.netgroup');
+	$result = $dbh->query('SELECT netgroup.name AS "netname", networks.* FROM netgroup LEFT JOIN (SELECT * FROM networks ORDER BY vlan ASC, name ASC) networks ON netgroup.id=networks.netgroup');
 	$rows = $result->fetchAll();
 	return($rows);
 }

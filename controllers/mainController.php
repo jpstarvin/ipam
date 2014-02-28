@@ -13,13 +13,12 @@ function getView() {
 	global $settings;
 	
 	if($_REQUEST['logout']=='logout'){
-		session_start();
+	    session_start();
 	    session_unset();
 	    session_destroy();
 	    session_write_close();
 	}
 	
-	session_start();
 	if ($_SESSION['isLoggedIn'] == 'yes'){
 		if($_REQUEST['v']){
 			$view = $settings['site_path'] . 'views/' . $_REQUEST['v'] . '.php';

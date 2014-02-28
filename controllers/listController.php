@@ -10,18 +10,19 @@ include($settings['site_path'] . 'models/listIPModel.php');
 $netid = $_REQUEST['netid'];
 
 if($_REQUEST['a'] == 'update') {
-	$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['id']);
+	$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['id']);
 	updateIP($data,$dbh);
 }
 
 if($_REQUEST['a'] == 'add') {
-	$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid']);
+	$data = array($_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['ipadd']);
 	addIP($data,$dbh);
 }
 
-if($_REQUEST['a'] == 'delete') {
+if($_REQUEST['a'] == 'unassign') {
 	$id = $_REQUEST['id'];
-	deleteIP($id,$dbh);	
+	$data = array("0",$id);
+	unassignIP($data,$dbh);	
 }
 
 if($_REQUEST['a'] == 'search') {
@@ -44,6 +45,8 @@ if($_REQUEST['m'] == 'modal'){
 	}
 	if($_REQUEST['netid'] <> ''){
 		$form = "add";
+		$netid = $_REQUEST['netid'];
+		$ipaddr = getIPs($netid,$dbh);
 	}
 }
 

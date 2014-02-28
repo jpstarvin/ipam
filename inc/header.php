@@ -1,3 +1,11 @@
+<?php 
+
+session_start();
+header("Cache-Control: no-cache");
+header("Pragma: no-cache");
+
+?>
+
 <!doctype html>
 <html lang="us">
 <head>
@@ -5,12 +13,14 @@
 	<title><?php echo $settings['site_name'];?></title>
 	<link href="css/site.css" rel="stylesheet">
 	<link href="css/tablesorter.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/tabcontent.css" />
+
+	<script type="text/javascript" src="js/tabcontent.js"></script>
 	<script src="js/jquery-1.9.1.js"></script>
-	<script src="js/common.js"></script>
 	<script src="js/jquery.tablesorter.min.js"></script>
 	<script src="js/ddaccordion.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	
+	<script src="js/common.js"></script>
 	<script type="text/javascript">
 
 		ddaccordion.init({
@@ -35,23 +45,24 @@
 		})
 		
 	</script>
-	
+
 	<script>
 		$(document).ready(function () {
 			$("#myTable").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}}}); 
 		});
-		
 		$(document).ready(function () {
-                        $("#networks").tablesorter({ sortList:[[1,0]], headers: {3:{sorter:false}, 5:{sorter:false}}});
-                });
-                $(document).ready(function () {
-                        $("#netgroups").tablesorter({ sortList:[[0,0]], headers: {2:{sorter:false}}});
-                });
+			$("#myTable2").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}}}); 
+		});
+
+        $(document).ready(function () {
+            $("#networks").tablesorter({ sortList:[[1,0]], headers: {3:{sorter:false}, 6:{sorter:false}}});
+        });
+		$(document).ready(function () {
+            $("#netgroups").tablesorter({ sortList:[[0,0]], headers: {2:{sorter:false}}});
+        });
 
 	</script>
-	
 
-		
 </head>
 
 <body>

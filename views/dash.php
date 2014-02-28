@@ -18,6 +18,7 @@ include($settings['site_pathe'] . 'controllers/dashController.php');
 					<th>Used IPs</td>
 				</tr>
 				<?php //loop through networks to print in table
+
 					foreach($top as $net){
 						echo '<tr>';
 						echo '<td><a href="?v=listIP&netid=' . $net['netid'] . '">' . $net['ngname'] . ' - ' . $net['name'] . '</a></td>';

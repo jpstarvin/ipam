@@ -1,11 +1,11 @@
 function openModal(url,action){
 	window.showModalDialog(url, window, 'dialogWidth:500px;dialogHeight:500px;center:yes;resizable:yes;status:no;scrollbars:no;menubar:no;titlebar:no;toolbar:no;');
 	if( action != "search")
-		window.location.reload();			
+		window.location.reload();		
 }
 
 function confirmDelete(url){
-	if (confirm("Delete?"))
+	if (confirm("Remove?"))
 		location.href=url
 }
 
@@ -38,5 +38,3 @@ function showNotificationBar(message, duration, bgColor, txtColor, height) {
         }, duration);
     });
 }
-
-

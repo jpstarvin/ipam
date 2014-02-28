@@ -3,7 +3,7 @@ ipam
 
 MVC IPAM Project
 
-Version 2.1
+Version 2.0
 
 Written by Adam Phillips
 
@@ -28,8 +28,6 @@ PHP5
 Apache2
 MySQL
 Python
-  - libsnmp-python
-  - python-ipaddr
 
 PHP-LDAP module is required for using LDAP Active Directory authentication.
 
@@ -42,7 +40,7 @@ Import the ipam_database.sql file into MYSQL.
 
 Open a web browser and point it to the location of index.php
 
-Login with admin/admin
+
 
 LICENSE
 =======
