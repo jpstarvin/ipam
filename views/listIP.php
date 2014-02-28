@@ -44,7 +44,7 @@ include($settings['site_path'] . 'controllers/listController.php');
 			</table>
 			<?php } ?>
 			<br/>
-			<ul id="iptabs" class="tabs" data-persist="true">
+			<ul id="iptabs" class="tabs">
 				<li><a href="#usedIP1" class="selected">Assigned IPs</a></li>
 				<li><a href="#usedIP2">Un-assigned IPs</a></li>	
 			</ul>
