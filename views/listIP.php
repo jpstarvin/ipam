@@ -38,7 +38,10 @@ include($settings['site_path'] . 'controllers/listController.php');
 				</tr>-->
 				<?php if ($_SESSION['role'] == 'Manager' || $_SESSION['role'] == 'Administrator'){?>
 				<tr>
-					<td><?php echo "<a href='#' title='Assign IP' onClick='openModal(\"". $settings['site_path'] . "ipfunctions.php?m=modal&netid=". $_REQUEST['netid'] . "\");'><img src='" . $settings['site_path'] . "images/add.png' /></a>";?></td>
+					<td>
+						<?php echo "<a href='#' title='Assign IP' onClick='openModal(\"". $settings['site_path'] . "ipfunctions.php?m=modal&netid=". $_REQUEST['netid'] . "\");'><img src='" . $settings['site_path'] . "images/add.png' /></a>";?>
+						<?php echo "<a href='" . $settings['site_path'] . "exportxls.php?a=export&ng=" . $_REQUEST['ng'] ."&netid=". $_REQUEST['netid'] . "' title='Export to CSV'><img src='" . $settings['site_path'] . "images/xlsdown.png' width-'24px' height='24px' /></a>";?>
+					</td>
 				</tr>
 				<?php } ?>
 			</table>

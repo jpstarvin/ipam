@@ -9,6 +9,39 @@ include($settings['site_path'] . 'models/listIPModel.php');
 
 $netid = $_REQUEST['netid'];
 
+switch($_REQUEST['a']){
+	case 'update':
+		$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['id']);
+		updateIP($data,$dbh);
+		break;
+	case 'add':
+		$data = array($_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['ipadd']);
+		addIP($data,$dbh);
+		break;
+	case 'unassign':
+		$id = $_REQUEST['id'];
+		$data = array("0",$id);
+		unassignIP($data,$dbh);	
+		break;
+	case 'search':
+		$keyword = $_POST['keyword'];
+		$ipaddr = searchIP($keyword,$dbh);	
+		break;
+	case 'export':
+		//Get network information for top of list
+		$network = getNetworks($netid,$dbh);
+		//Get array of IPs
+		$ipaddr = getIPs($netid,$dbh);
+		break;
+	default:
+		//Get network information for top of list
+		$network = getNetworks($netid,$dbh);
+		//Get array of IPs
+		$ipaddr = getIPs($netid,$dbh);
+		break;
+}
+
+/*
 if($_REQUEST['a'] == 'update') {
 	$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['id']);
 	updateIP($data,$dbh);
@@ -34,7 +67,7 @@ if($_REQUEST['a'] == 'search') {
 	//Get array of IPs
 	$ipaddr = getIPs($netid,$dbh);
 }
-
+*/
 if($_REQUEST['m'] == 'modal'){
 	$navs=getNav($dbh);
 	if($_REQUEST['id'] <> ''){

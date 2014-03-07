@@ -14,8 +14,8 @@ include($settings['site_path'] . 'controllers/loginController.php');
 	<div class="logincontent">
 	<section class="loginform cf">
 		<form name="login" action="?v=login&a=login" method="post" accept-charset="utf-8">
-				<label for="usermail">Username</label>
-				<input type="username" name="username" placeholder="Username" required>
+				<label for="username">Username</label>
+				<input type="text" name="username" placeholder="Username" required>
 				<br /><br />
 				<label for="password">Password</label>
 				<input type="password" name="password" placeholder="Password" required>
