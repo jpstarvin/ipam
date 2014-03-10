@@ -23,6 +23,8 @@ class scan (threading.Thread):
 					self.snmp = ""
 			else:
 				self.snmp = ""
+		else:
+			self.snmp = ""
 
 #Get hostname from DNS
 def getName(ip):
