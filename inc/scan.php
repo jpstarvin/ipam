@@ -19,7 +19,12 @@ $cmd = "-n " . $network;
  if($snmp <> "none"){
  	$cmd .= " -s " . $snmp;
  }
- 
+
+if ($netid == 0){
+	$getid = $dbh->prepare("Select `id` FROM networks WHERE `network`='$network' ORDER BY id DESC LIMIT 1");
+	$netid = $getid->execute();
+}
+
 $str=exec("python inc/scan.py $cmd",$output,$ret_code);
 
 $qry = $dbh->prepare("INSERT INTO ipaddress (`ipaddress`,`devicename`,`netid`,`used`) VALUES (?,?,?,?)");
