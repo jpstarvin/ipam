@@ -3,8 +3,6 @@
 /*************************************************
  * filename = mainController.php
  * 
- * This file checks, sets, and returns the APC
- * Cache.
  *************************************************/
 
 
