@@ -33,7 +33,7 @@ function updateIP($data,$dbh){
 }
 
 function addIP($data,$dbh){
-	$sql = 'UPDATE ipaddress SET `ipaddress`=?,`devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=?,`used`=? WHERE `id`=?';
+	$sql = 'UPDATE ipaddress SET `devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=?,`used`=? WHERE `id`=?';
 	updateRecord($dbh,$sql,$data);
 }
 
