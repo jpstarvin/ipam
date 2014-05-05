@@ -52,9 +52,9 @@ foreach ($output as $res){
             }else{
 	        	$data= array("");
         	}
+        		array_push($data,1);
 			array_push($data,trim($out[0]));
 			array_push($data,$netid);
-			array_push($data,1);
 			print_r($data);
 			$qry2->execute($data);
 		}else{
