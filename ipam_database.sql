@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `netgroup` (
 
 CREATE TABLE IF NOT EXISTS `networks` (
   `id` mediumint NOT NULL AUTO_INCREMENT,
-  `netgroup` int NOT NULL,
+  `netgroup` mediumint NOT NULL,
   `name` varchar(30) NOT NULL,
   `network` varchar(30) NOT NULL,
   `exclusion_list` varchar(160) NOT NULL,
