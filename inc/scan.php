@@ -22,7 +22,9 @@ $cmd = "-n " . $network;
 
 if ($netid == 0){
 	$getid = $dbh->prepare("Select `id` FROM networks WHERE `network`='$network' ORDER BY id DESC LIMIT 1");
-	$netid = $getid->execute();
+	$getid->execute();
+	$nid = $getid->fetch(PDO::FETCH_ASSOC);
+	$netid = $nid[0];
 }
 
 $str=exec("python inc/scan.py $cmd",$output,$ret_code);
