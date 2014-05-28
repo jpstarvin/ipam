@@ -66,9 +66,9 @@ if ($manage == 'netgroup'){
 		if($_POST['name'] <> ''){
 			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['vlan'],str_replace(' ', '', $_POST['exclusion']),str_replace(' ', '', $_POST['snmp']));
 			addNetwork($data,$dbh);
-			if($_POST['exclusion_list'] == ""){
+			if($_POST['exclusion'] == ""){
 				$ex = "none";
-			}else{$ex = $_POST['exclusion_list'];}
+			}else{$ex = $_POST['exclusion'];}
 			if($_POST['snmp'] == ""){
 				$snmp = "none";
 			}else{$snmp = $_POST['snmp'];}
