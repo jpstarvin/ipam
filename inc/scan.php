@@ -22,7 +22,9 @@ $cmd = "-n " . $network;
 
 if ($netid == 0){
 	$getid = $dbh->prepare("Select `id` FROM networks WHERE `network`='$network' ORDER BY id DESC LIMIT 1");
-	$netid = $getid->execute();
+	$getid->execute();
+	$nid = $getid->fetch(PDO::FETCH_ASSOC);
+	$netid = $nid[0];
 }
 
 $str=exec("python inc/scan.py $cmd",$output,$ret_code);
@@ -52,7 +54,7 @@ foreach ($output as $res){
             }else{
 	        	$data= array("");
         	}
-        		array_push($data,1);
+        	array_push($data,1);
 			array_push($data,trim($out[0]));
 			array_push($data,$netid);
 			print_r($data);
@@ -61,12 +63,12 @@ foreach ($output as $res){
 			echo "insert " . $out[0] . "\n";
 			$data = array(trim($out[0]));
 			if(trim($out[2]) <>''){
-                       		array_push($data,trim($out[2]));
-                	}elseif(trim($out[3]) <> ''){
-                       		array_push($data,trim($out[3]));
-               		}else{
-                       		array_push($data,"");
-                	}
+                array_push($data,trim($out[2]));
+            }elseif(trim($out[3]) <> ''){
+				array_push($data,trim($out[3]));
+            }else{
+            	array_push($data,"");
+            }
 			array_push($data,$netid);
 			array_push($data,1);
 			print_r($data);

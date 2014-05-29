@@ -48,7 +48,10 @@ if ($manage == 'netgroup'){
 	
 }elseif ($manage == 'network'){
 	$netgroups = getNetgroups($dbh);
-	$networks = getNav($dbh);
+	
+	if ($settings['new'] <> 1){
+		$networks = getNav($dbh);
+	}
 	if ($form == 'update'){
 		$net = getNet($id,$dbh);
 		if ($_POST['id'] <> ''){
@@ -66,12 +69,19 @@ if ($manage == 'netgroup'){
 		if($_POST['name'] <> ''){
 			$data = array($_POST['netgroup'],$_POST['name'],$_POST['network'],$_POST['vlan'],str_replace(' ', '', $_POST['exclusion']),str_replace(' ', '', $_POST['snmp']));
 			addNetwork($data,$dbh);
-			if($_POST['exclusion_list'] == ""){
+			if($_POST['exclusion'] == ""){
 				$ex = "none";
-			}else{$ex = $_POST['exclusion_list'];}
+			}else{$ex = $_POST['exclusion'];}
 			if($_POST['snmp'] == ""){
 				$snmp = "none";
 			}else{$snmp = $_POST['snmp'];}
+			
+			$dir = $settings['site_path'] . 'config.php';
+			$line = '$settings[\'new\'] = 1;';
+			$contents = file_get_contents($dir);
+			$contents = str_replace($line, '', $contents);
+			file_put_contents($dir, $contents);
+		
 			$command = "php " . $settings['site_path'] ."inc/scan.php " . $_POST['network'] . " " . $ex . " " . $snmp . " 0  > /dev/null 2>&1 & echo $!";
 			exec($command);
 			echo "<script> window.location = \"?v=admin&m=network&notif=1\";</script>";

@@ -4,7 +4,7 @@
  * filename = config.php
  * 
  * This file contains the global site settings not stored in
- * the database. These settings are loaded into APC Cache.
+ * the database. 
  ************************************************************/
  
  //General Settings
@@ -30,4 +30,6 @@ $settings['ad_pass'] = "";
 $settings['ad_admin_group'] = "";
 $settings['ad_manager_group'] = "";
 $settings['ad_view_group'] = "";
+
+$settings['new'] = 1;
 ?>

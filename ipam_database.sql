@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `networks` (
   `netgroup` mediumint NOT NULL,
   `name` varchar(30) NOT NULL,
   `network` varchar(30) NOT NULL,
+  `vlan` int(10) NOT NULL,
   `exclusion_list` varchar(160) NOT NULL,
   `snmp` varchar(160) NOT NULL,
   PRIMARY KEY (`id`),
