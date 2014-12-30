@@ -6,7 +6,7 @@ header("Pragma: no-cache");
 
 ?>
 
-<!doctype html>
+<!DOCTYPE html Cache-Control: no tranform>
 <html lang="us">
 <head>
 	<meta charset="utf-8">
@@ -14,9 +14,10 @@ header("Pragma: no-cache");
 	<link href="css/site.css" rel="stylesheet">
 	<link href="css/tablesorter.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/tabcontent.css" />
-
+	
+	<script type="text/javascript" src="js/modernizr.js"></script>
 	<script type="text/javascript" src="js/tabcontent.js"></script>
-	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery.js"></script>
 	<script src="js/jquery.tablesorter.min.js"></script>
 	<script src="js/ddaccordion.js"></script>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -48,7 +49,7 @@ header("Pragma: no-cache");
 
 	<script>
 		$(document).ready(function () {
-			$("#myTable").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}}}); 
+			$("#myTable").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}, 5:{sorter:false}}}); 
 		});
 		$(document).ready(function () {
 			$("#myTable2").tablesorter({ sortList:[[0,0]], headers: {0:{sorter:"ipAddress"}, 4:{sorter:false}}}); 
@@ -60,8 +61,9 @@ header("Pragma: no-cache");
 		$(document).ready(function () {
             $("#netgroups").tablesorter({ sortList:[[0,0]], headers: {2:{sorter:false}}});
         });
-
+        	
 	</script>
+
 
 </head>
 

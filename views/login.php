@@ -14,6 +14,7 @@ include($settings['site_path'] . 'controllers/loginController.php');
 	<div class="logincontent">
 	<section class="loginform cf">
 		<form name="login" action="?v=login&a=login" method="post" accept-charset="utf-8">
+				<input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
 				<label for="username">Username</label>
 				<input type="text" name="username" placeholder="Username" required>
 				<br /><br />

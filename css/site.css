@@ -39,7 +39,7 @@ body {
 #logo {
 	display: inline-block;
 	margin: 5px 0 5px 10px;
-	vertical-align: center;
+	vertical-align: middle;
 	height: 90px;
 	width: 150px;
 }
@@ -48,7 +48,7 @@ body {
 	position: absolute;
 	top: 25px;
 	display: inline-block;
-	vertical-align: center;
+	vertical-align: middle;
 	margin: 5px;
 }
 .navbar,
@@ -89,7 +89,7 @@ body {
 }
 
 .navbar li a {
-    display: block;
+    display: inline-block;
     padding: 0 14px;
     margin: 6px 0;
     line-height: 28px;
@@ -120,18 +120,15 @@ body {
 	color: #8fde62;
 }
 
-.navbar ul {
+.navbar li ul {
     position: absolute;
-    top: 40px;
+	visibility:hidden;
     left: 0;
- 
     opacity: 0;
     background: #1f2024;
- 
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
- 
     -webkit-transition: opacity .25s ease .1s;
     -moz-transition: opacity .25s ease .1s;
     -o-transition: opacity .25s ease .1s;
@@ -139,7 +136,7 @@ body {
     transition: opacity .25s ease .1s;
 }
  
-.navbar li:hover > ul { opacity: 1; }
+.navbar li:hover > ul { opacity: 1; visibility:visible;}
  
 .navbar ul li {
     height: 0;
@@ -366,6 +363,7 @@ label {
 
 #subnet-info {
 	margin: auto;
+	background-color: #FFF;
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
@@ -394,6 +392,7 @@ label {
 
 .dash-info {
 	margin: auto;
+	background-color: #FFF;
 	vertical-align: top;
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
@@ -607,3 +606,5 @@ a img{
      padding:15px;
      text-align:center;
 }
+
+

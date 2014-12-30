@@ -61,6 +61,7 @@ include($settings['site_path'] . 'controllers/listController.php');
 							<th>Device Name</th>
 							<th>Device Type</th>
 							<th>Description</th>
+							<th width='40px'>Status</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -73,12 +74,17 @@ include($settings['site_path'] . 'controllers/listController.php');
 									echo "<td>" . $ip['devicename'] . "</td>";
 									echo "<td>" . $ip['devicetype'] . "</td>";
 									echo "<td>" . $ip['desc'] . "</td>";
+									if($ip['active'] == 0){
+										echo "<td align='center' title='Inactive'><img src='" . $settings['site_path'] . "images/down.png' /></td>";										
+									}else{
+										echo "<td align='center' title='Active'><img src='" . $settings['site_path'] . "images/up.png' /> </td>";
+									}
 									echo "<td align='right' width='80px'>
 										<a href='#' title='Notes: " . $ip['notes'] . "' class='tooltip'><span title='More'><img src='" . $settings['site_path'] . "images/info.png' /></span></a>";
 									if($_SESSION['role'] == 'Manager' || $_SESSION['role'] == 'Administrator'){
 										echo " 
-										<a style='cursor:pointer;' title='Edit' onClick='openModal(\"". $settings['site_path'] . "ipfunctions.php?m=modal&id=" . $ip['id'] . "\",\"" . $_REQUEST['a'] ."\");'><img src='" . $settings['site_path'] . "images/edit.png' /></a>
-										<a style='cursor:pointer;'  onClick='confirmDelete(\"" . $settings['site_path'] . "?v=listIP&netid=" . $ip['netid'] . "&a=unassign&id=" . $ip['id'] . "\")' title='UnAssign'><img src='" . $settings['site_path'] . "images/delete.png' /></a>";
+										<a id='edit' style='cursor:pointer;' title='Edit' onClick='openModal(\"". $settings['site_path'] . "ipfunctions.php?m=modal&id=" . $ip['id'] . "\",\"" . $_REQUEST['a'] ."\");'><img src='" . $settings['site_path'] . "images/edit.png' /></a>
+										<a style='cursor:pointer;'  onClick='confirmDelete(\"" . $settings['site_path'] . "?v=listIP&ng=" . $_REQUEST['ng'] . "&netid=" . $ip['netid'] . "&a=unassign&id=" . $ip['id'] . "\")' title='UnAssign'><img src='" . $settings['site_path'] . "images/delete.png' /></a>";
 									}
 									echo "</td>";
 									echo "</tr>";

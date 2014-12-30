@@ -3,8 +3,6 @@
 /*************************************************
  * filename = mainController.php
  * 
- * This file checks, sets, and returns the APC
- * Cache.
  *************************************************/
 
 
@@ -12,14 +10,17 @@
 function getView() {
 	global $settings;
 	
-	if($_REQUEST['logout']=='logout'){
+	$logout = '';
+	if(isset($_REQUEST['logout'])){$logout = $_REQUEST['logout'];}
+	
+	if($logout=='logout'){
 	    session_start();
 	    session_unset();
 	    session_destroy();
 	    session_write_close();
 	}
 	
-	if ($_SESSION['isLoggedIn'] == 'yes'){
+	if (@$_SESSION['isLoggedIn'] == 'yes'){
 		if($_REQUEST['v']){
 			$view = $settings['site_path'] . 'views/' . $_REQUEST['v'] . '.php';
 			include($view);

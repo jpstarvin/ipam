@@ -1,12 +1,20 @@
 <?php
 
+session_start();
+if ($_SESSION['isLoggedIn'] <> 'yes'){
+	echo'<script>window.close();</script>';
+}
+
 require('config.php');
-include($settings['site_path'] . 'controllers/listController.php');
 
 include($settings['site_path'] . 'inc/modal_header.php');
+include($settings['site_path'] . 'controllers/listController.php');
 
 if ($_REQUEST['a'] <> ''){
-	echo'<script>window.close();</script>';
+	echo'<script>
+		window.opener.location.reload();
+		window.close();
+		</script>';
 }
 
 ?>
@@ -20,29 +28,9 @@ if ($_REQUEST['a'] <> ''){
 					<form name="update" method="post" action="' . $settings['site_path'] .'ipfunctions.php?a=' . $form . '">
 					<input type="hidden" name="id" value="'.$ip['id'] .'">
 					<input type="hidden" value="0" name="assigned">
-					<label for="netid">Network</label><br />
-					<select name="netid" class="ui-corner-all" >';
+					<input type="hidden" name="netid" value="'.$ip['netid'] .'">';
 					
-					$netname = '';
-					//Loop through the query results
-					foreach($navs as $nav){
-						if ($netname <> $nav['netname']){
-							$netname = $nav['netname'];
-							echo '<optgroup label="' . $netname . '">';
-						}
-						if($nav['id'] == $ip['netid']){
-							echo '<option value="' . $nav['id']. '" selected="selected">' . $nav['name'] .'</option>';
-						}elseif ($nav['id'] == $netid){
-							echo '<option value="' . $nav['id']. '" selected="selected">' . $nav['name'] .'</option>';	
-						}else{
-							echo '<option value="' . $nav['id']. '">' . $nav['name'] .'</option>';
-						}
-					}
-					
-				echo'
-					</select>
-					<br />
-					<label for="ipadd">IP Address</label><br />';
+				echo'<label for="ipadd">IP Address</label><br />';
 				if ($_REQUEST['id'] <> ''){
 					echo '<input type="text" name="ipadd" class="ui-corner-all" value="' . $ip['ipaddress'] .'" readonly>';
 				}else{
@@ -56,7 +44,8 @@ if ($_REQUEST['a'] <> ''){
 					echo '</select>';
 				}
 				echo'
-					<br />					<label for="devname">Device Name</label><br />
+					<br />					
+					<label for="devname">Device Name</label><br />
 					<input type="text" name="devname" class="ui-corner-all" value="' . $ip['devicename'] .'">
 					<br />
 					<label for="devtype">Device Type</label><br />
@@ -112,7 +101,7 @@ if ($_REQUEST['a'] <> ''){
 					}
 					echo'
 					<br />
-					<button class="submit" onClick="this.submit();">' . ucfirst($form) . '</button>
+					<input type="submit" name="Submit" class="submit" value="' . ucfirst($form) . '">
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.close();">
 					</form>'; 
 				

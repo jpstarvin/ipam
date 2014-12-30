@@ -7,9 +7,9 @@
 include($settings['site_path'] . 'models/dbModel.php');
 include($settings['site_path'] . 'models/listIPModel.php');
 
-$netid = $_REQUEST['netid'];
+$netid = @$_REQUEST['netid'];
 
-switch($_REQUEST['a']){
+switch(@$_REQUEST['a']){
 	case 'update':
 		$data = array($_POST['ipadd'],$_POST['devname'],$_POST['devtype'],$_POST['desc'],$_POST['notes'],$_POST['netid'],$_POST['assigned'],$_POST['id']);
 		updateIP($data,$dbh);
@@ -21,7 +21,9 @@ switch($_REQUEST['a']){
 	case 'unassign':
 		$id = $_REQUEST['id'];
 		$data = array("0",$id);
-		unassignIP($data,$dbh);	
+		unassignIP($data,$dbh);
+		$network = getNetworks($netid,$dbh);
+		$ipaddr = getIPs($netid,$dbh);	
 		break;
 	case 'search':
 		$keyword = $_POST['keyword'];
@@ -68,17 +70,16 @@ if($_REQUEST['a'] == 'search') {
 	$ipaddr = getIPs($netid,$dbh);
 }
 */
-if($_REQUEST['m'] == 'modal'){
-	$navs=getNav($dbh);
+if(@$_REQUEST['m'] == 'modal'){
+	//$navs=getNav($dbh);
 	if($_REQUEST['id'] <> ''){
 		$id = $_REQUEST['id'];
 		$ip = getIP($id,$dbh);
 		$form = "update";
 		
 	}
-	if($_REQUEST['netid'] <> ''){
+	if($netid <> ''){
 		$form = "add";
-		$netid = $_REQUEST['netid'];
 		$ipaddr = getIPs($netid,$dbh);
 	}
 }

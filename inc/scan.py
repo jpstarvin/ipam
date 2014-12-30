@@ -26,6 +26,7 @@ class scan (threading.Thread):
 		else:
 			self.snmp = ""
 
+
 #Get hostname from DNS
 def getName(ip):
 	host,alias,addresslist = lookup(ip)

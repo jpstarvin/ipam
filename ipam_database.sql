@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ipam`
+-- Database: `ipamdev`
 --
-CREATE DATABASE `ipam` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ipam`;
+CREATE DATABASE `ipamdev` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ipamdev`;
 
 -- --------------------------------------------------------
 

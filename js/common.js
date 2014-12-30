@@ -1,7 +1,9 @@
 function openModal(url,action){
-	window.showModalDialog(url, window, 'dialogWidth:500px;dialogHeight:500px;center:yes;resizable:yes;status:no;scrollbars:no;menubar:no;titlebar:no;toolbar:no;');
-	if( action != "search")
-		window.location.reload();		
+	var left = Number((screen.width/2)-(500/2));
+	var top = Number((screen.height/2)-(600/2));
+	window.open(url, "", "width=500px,height=600px,resizable=yes,status=no,scrollbars=no,menubar=no,titlebar=no,toolbar=no");
+	//if( action != "search")
+	//	window.location.reload();		
 }
 
 function confirmDelete(url){

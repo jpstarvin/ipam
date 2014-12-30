@@ -23,7 +23,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<label for="desc">Description</label>
 					<textarea name="desc" class="ui-corner-all"><?php echo $netgroup['desc'];?></textarea>
 					</div><br />
-					<button class="submit" onClick="this.submit();"><?php echo ucfirst($form);?></button>
+					<button type="submit" class="submit"><?php echo ucfirst($form);?></button>
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=netgroup';">					
 				</form></div>
 				<div class="ipTable">
@@ -88,7 +88,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<label for="snmp">SNMP Communities</label>
 					<textarea name="snmp" class="ui-corner-all"><?php echo $net['snmp'];?></textarea>
 					</div><br />
-					<button class="submit" onClick="this.submit();"><?php echo ucfirst($form);?></button>
+					<button type="submit" class="submit"><?php echo ucfirst($form);?></button>
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=network';">					
 				</form></div>
 				<div class="ipTable">
@@ -174,7 +174,7 @@ include($settings['site_path'] . 'controllers/adminController.php');
 						}
 						?>
 					</select></div><br />
-					<button class="submit" onClick="this.submit();"><?php echo ucfirst($form);?></button>
+					<button type="submit" class="submit"><?php echo ucfirst($form);?></button>
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=users';">	
 					<p style="font-size:8pt;"><strong>Note:</strong>&nbsp;This is only used for local user authentication.</p>				
 				</form></div>
@@ -219,11 +219,11 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<input type="text" name="sname" class="ui-corner-all" value="<?php echo $settings['site_name'];?>">
 					<br />
 					<label for="stitle">Site Title</label>
-					<input type="text" name="stitle" class="ui-corner-all" size="60" value="<?php echo $settings['site_title'];?>">
+					<input type="text" name="stitle" class="ui-corner-all" size="50" value="<?php echo $settings['site_title'];?>">
 					<label for="spath">Site Path</label>
 					<input type="text" name="spath" class="ui-corner-all" value="<?php echo $settings['site_path'];?>">
 					<label for="slogo">Site Logo</label>
-					<input type="text" name="slogo" class="ui-corner-all" size="60" value="<?php echo $settings['logo'];?>">
+					<input type="text" name="slogo" class="ui-corner-all" size="50" value="<?php echo $settings['logo'];?>">
 					</div><br />
 					<div class="formsection">
 					<h4 align="center">Database Settings</h4>
@@ -257,23 +257,23 @@ include($settings['site_path'] . 'controllers/adminController.php');
 					<br/>
 					<p>LDAP Settings</p>
 					<label for="addc">Domain Controller</label>
-					<input type="text" name="addc" class="ui-corner-all" size="60" value="<?php echo $settings['ad_domain_controller'];?>" placeholder="dc1.example.com,dc2.example.com">
+					<input type="text" name="addc" class="ui-corner-all" size="50" value="<?php echo $settings['ad_domain_controller'];?>" placeholder="dc1.example.com,dc2.example.com">
 					<label for="dsuffix">Domain Suffix</label>
-					<input type="text" name="dsuffix" class="ui-corner-all" size="60" value="<?php echo $settings['ad_domain_suffix'];?>" placeholder="@example.com">
+					<input type="text" name="dsuffix" class="ui-corner-all" size="50" value="<?php echo $settings['ad_domain_suffix'];?>" placeholder="@example.com">
 					<label for="bdn">Base DN</label>
-					<input type="text" name="bdn" class="ui-corner-all" size="60" value="<?php echo $settings['ad_base_dn'];?>" placeholder="dc=example,dc=com">
+					<input type="text" name="bdn" class="ui-corner-all" size="50" value="<?php echo $settings['ad_base_dn'];?>" placeholder="dc=example,dc=com">
 					<label for="ldapuser">LDAP User</label>
-					<input type="text" name="ldapuser" class="ui-corner-all" size="60" value="<?php echo $settings['ad_user'];?>" placeholder="administrator">
+					<input type="text" name="ldapuser" class="ui-corner-all" size="50" value="<?php echo $settings['ad_user'];?>" placeholder="administrator">
 					<label for="ldappass">LDAP Pass</label>
-					<input type="text" name="ldappass" class="ui-corner-all" size="60" value="<?php echo $settings['ad_pass'];?>" placeholder="password">
+					<input type="text" name="ldappass" class="ui-corner-all" size="50" value="<?php echo $settings['ad_pass'];?>" placeholder="password">
 					<label for="adadmin">Administrators LDAP Group</label>
-					<input type="text" name="adadmin" class="ui-corner-all" size="60" value="<?php echo $settings['ad_admin_group'];?>" placeholder="Admins">
+					<input type="text" name="adadmin" class="ui-corner-all" size="50" value="<?php echo $settings['ad_admin_group'];?>" placeholder="Admins">
 					<label for="admanage">Manager LDAP Group</label>
-					<input type="text" name="admanage" class="ui-corner-all" size="60" value="<?php echo $settings['ad_manager_group'];?>" placeholder="Managers">
+					<input type="text" name="admanage" class="ui-corner-all" size="50" value="<?php echo $settings['ad_manager_group'];?>" placeholder="Managers">
 					<label for="adview">View Only LDAP Group</label>
-					<input type="text" name="adview" class="ui-corner-all" size="60" value="<?php echo $settings['ad_view_group'];?>" placeholder="Users">
+					<input type="text" name="adview" class="ui-corner-all" size="50" value="<?php echo $settings['ad_view_group'];?>" placeholder="Users">
 					</div><br />
-					<button class="submit" onClick="this.submit();">Update</button>
+					<button type="submit" class="submit">Update</button>
 					<input type="button" name="Cancel" value="Cancel" class="cancel" onClick="window.location='?v=admin&m=site';">					
 				</form></div>
 				<?php

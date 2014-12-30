@@ -6,8 +6,8 @@
 error_reporting(E_ALL);
 //echo "start";
 
-try{
-    $dbh=new PDO('mysql:host=' . $settings['dbhost'] .';dbname=' . $settings['dbname'],$settings['dbuser'],$settings['dbpass']);
+try{ 
+    $dbh=new PDO('mysql:host=localhost;dbname=' . $settings['dbname'],$settings['dbuser'],$settings['dbpass']);
 } 
 catch(PDOException $e){
     echo 'Error connecting to MySQL!: '.$e->getMessage();

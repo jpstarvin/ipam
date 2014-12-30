@@ -1,7 +1,7 @@
 <?php
 
 include($settings['site_path'] . 'inc/nav.php');
-include($settings['site_pathe'] . 'controllers/dashController.php');
+include($settings['site_path'] . 'controllers/dashController.php');
 
 ?>
 	<div id="wrapper">

@@ -28,7 +28,6 @@ function getIP($id,$dbh){
 
 function updateIP($data,$dbh){
 	$sql = 'UPDATE ipaddress SET `ipaddress`=?,`devicename`=?,`devicetype`=?,`desc`=?,`notes`=?,`netid`=?,`used`=? WHERE `id`=?';
-	print_r($data);
 	updateRecord($dbh,$sql,$data);
 }
 

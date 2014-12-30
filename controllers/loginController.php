@@ -7,6 +7,11 @@ include($settings['site_path'] . 'inc/ad_auth/adLDAP.php');
 if($_REQUEST['a'] == 'login'){
 	$username = strtolower($_POST['username']);
 	$pass = $_POST['password'];
+	$url = $_POST['url'];
+	//Check if url is set to login page.
+	if ($url == '/ipam/?v=login&a=login'){
+		$url = '';
+	}
 	
 	if($settings['auth_method'] == 'local'){
 		$userinfo = getHash($dbh,$username);
@@ -16,7 +21,11 @@ if($_REQUEST['a'] == 'login'){
 			$_SESSION['role'] = $userinfo['role'];
 			$_SESSION['username'] = $username;
 			updateStats($dbh);
-			echo "<script>window.location='?v=dash';</script>";
+			if ($url == '' || strstr($url,'logout',true)){
+				echo "<script>window.location='?v=dash';</script>";
+			}else{
+				echo "<script>window.location='" . $url . "';</script>";
+			}
 		}else{
 			echo "<script>showNotificationBar('Username or Password Incorrect!!');</script>";
 		}	
@@ -53,24 +62,36 @@ if($_REQUEST['a'] == 'login'){
 				$_SESSION['role'] = 'Administrator';
 				$_SESSION['username'] = $username;
 				updateStats($dbh);
-				echo "<script>window.location='?v=dash';</script>";
+				if ($url == '' || strstr($url,'logout',true)){
+					echo "<script>window.location='?v=dash';</script>";
+				}else{
+					echo "<script>window.location='" . $url . "';</script>";
+				}
 			}elseif ($result = $adldap->user()->inGroup($username,$settings['ad_manager_group'])) {
 				$_SESSION['isLoggedIn'] = 'yes';
 				$_SESSION['role'] = 'Manager';
 				$_SESSION['username'] = $username;
 				updateStats($dbh);
-				echo "<script>window.location='?v=dash';</script>";
+				if ($url == '' || strstr($url,'logout',true)) {
+					echo "<script>window.location='?v=dash';</script>";
+				}else{
+					echo "<script>window.location='" . $url . "';</script>";
+				}
 			}elseif ($result = $adldap->user()->inGroup($username,$settings['ad_view_group'])) {
 				$_SESSION['isLoggedIn'] = 'yes';
 				$_SESSION['username'] = $username;
 				$_SESSION['role'] = 'View-Only';
 				updateStats($dbh);
-				echo "<script>window.location='?v=dash';</script>";
+				if ($url == '' || strstr($url,'logout',true)){
+					echo "<script>window.location='?v=dash';</script>";
+				}else{
+					echo "<script>window.location='" . $url . "';</script>";
+				}
 			}
 		}else{
 			echo "<script>showNotificationBar('Username or Password Incorrect!!');</script>";
 		}
 		
 	}
-}	
+}
 ?>

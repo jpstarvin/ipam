@@ -36,13 +36,14 @@ body {
 	display: inline-block;
 	margin: auto;
 }
+ 
 .content {
 	display: block;
 	padding: 20px;
 }
 
 #formbox {
-	height: 400px;
+	min-height: 400px;
 	width: 250px;
 	padding: 10px;
 	margin: auto;
@@ -54,7 +55,8 @@ body {
 	-webkit-box-shadow: 0 0 10px #888888;
 	-moz-box-shadow: 0 0 10px #888888;
 }
-button.submit {
+
+input.submit {
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	background: #64c8ef; /* Old browsers */
 	background: -moz-linear-gradient(top,  #64c8ef 0%, #00a2e2 100%); /* FF3.6+ */
@@ -71,7 +73,7 @@ button.submit {
 	border-radius: 3px;
 	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
-button.submit:hover {
+input.submit:hover {
 	background: #e94f31;
 	background: -moz-linear-gradient(#e94f31 0%, #d13516 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e94f31), color-stop(100%, #d13516));
